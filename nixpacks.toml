@@ -1,0 +1,5 @@
+# Konfigurasi Nixpacks untuk Railway (CodeIgniter 4)
+providers = ["php"]
+
+[variables]
+NIXPACKS_PHP_ROOT_DIR = "public"

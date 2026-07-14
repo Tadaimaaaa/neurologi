@@ -1,0 +1,566 @@
+/* ==========================================================================
+   MODERN CLINICAL NEUROLOGY DESIGN SYSTEM (RS BHAYANGKARA PADANG)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Primary Medical Palette */
+    --neuro-primary: #1E40AF;
+    --neuro-primary-light: #3B82F6;
+    --neuro-primary-dark: #1E3A8A;
+    --neuro-accent: #06B6D4;
+
+    /* Neutral & Surfaces */
+    --bg-page: #F8FAFC;
+    --surface-card: #FFFFFF;
+    --surface-glass: rgba(255, 255, 255, 0.85);
+    --border-soft: #E2E8F0;
+    --border-subtle: #F1F5F9;
+
+    /* Text */
+    --text-main: #0F172A;
+    --text-muted: #64748B;
+    --text-light: #94A3B8;
+
+    /* Role Accent Themes */
+    --role-admin-gradient: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+    --role-dokter-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
+    --role-perawat-gradient: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+    --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    --shadow-xl: 0 20px 35px -10px rgba(15, 23, 42, 0.12);
+    --shadow-glow-primary: 0 8px 25px -4px rgba(37, 99, 235, 0.35);
+    --shadow-glow-success: 0 8px 25px -4px rgba(5, 150, 105, 0.35);
+    --shadow-glow-purple: 0 8px 25px -4px rgba(124, 58, 237, 0.35);
+}
+
+/* ==========================================================================
+   GLOBAL BASE & TYPOGRAPHY
+   ========================================================================== */
+body {
+    font-family: var(--font-body) !important;
+    color: var(--text-main);
+    background-color: var(--bg-page) !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .card-title, .brand-text {
+    font-family: var(--font-heading) !important;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.content-wrapper {
+    background-color: var(--bg-page) !important;
+    padding: 1.5rem;
+}
+
+/* ==========================================================================
+   MODERN GLASS NAVBAR
+   ========================================================================== */
+.main-header.navbar {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft) !important;
+    box-shadow: 0 1px 15px rgba(15, 23, 42, 0.03);
+    padding: 0.6rem 1.25rem;
+}
+
+.navbar .nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--text-main) !important;
+}
+
+/* Modern Profile Capsule in Navbar */
+.user-profile-capsule {
+    display: inline-flex;
+    align-items: center;
+    background: #F1F5F9;
+    border: 1px solid var(--border-soft);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: all 0.25s ease;
+}
+
+.user-profile-capsule:hover {
+    background: #E2E8F0;
+    transform: translateY(-1px);
+}
+
+/* Live Time Widget */
+.live-clock-badge {
+    background: #EFF6FF;
+    color: #1E40AF;
+    border: 1px solid #DBEAFE;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* ==========================================================================
+   MODERN SIDEBAR & BRANDING
+   ========================================================================== */
+.main-sidebar {
+    background: #0F172A !important;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.brand-link {
+    display: flex !important;
+    align-items: center;
+    padding: 1rem 1.25rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transition: background-color 0.25s ease;
+}
+
+.brand-link .logo-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.brand-text-block {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.75rem;
+    line-height: 1.2;
+}
+
+.brand-text-block .title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #F8FAFC;
+}
+
+.brand-text-block .subtitle {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #94A3B8;
+    letter-spacing: 0.03em;
+}
+
+/* Sidebar Navigation Items */
+.sidebar .nav-sidebar {
+    padding: 0.75rem 0.5rem;
+}
+
+.sidebar .nav-header {
+    color: #64748B !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em;
+    padding: 1rem 1rem 0.4rem !important;
+    text-transform: uppercase;
+}
+
+.sidebar .nav-sidebar .nav-item {
+    margin-bottom: 0.25rem;
+}
+
+.sidebar .nav-sidebar .nav-item .nav-link {
+    color: #94A3B8;
+    border-radius: 10px;
+    padding: 0.68rem 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar .nav-sidebar .nav-item .nav-link .nav-icon {
+    font-size: 1rem;
+    width: 1.75rem;
+    color: #64748B;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.sidebar .nav-sidebar .nav-item .nav-link:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #FFFFFF;
+    transform: translateX(3px);
+}
+
+.sidebar .nav-sidebar .nav-item .nav-link:hover .nav-icon {
+    color: #38BDF8;
+    transform: scale(1.1);
+}
+
+/* Active Nav Links per Role */
+.sidebar-admin .nav-sidebar .nav-item .nav-link.active {
+    background: var(--role-admin-gradient) !important;
+    color: #FFFFFF !important;
+    box-shadow: var(--shadow-glow-primary);
+    font-weight: 600;
+}
+
+.sidebar-dokter .nav-sidebar .nav-item .nav-link.active {
+    background: var(--role-dokter-gradient) !important;
+    color: #FFFFFF !important;
+    box-shadow: var(--shadow-glow-success);
+    font-weight: 600;
+}
+
+.sidebar-perawat .nav-sidebar .nav-item .nav-link.active {
+    background: var(--role-perawat-gradient) !important;
+    color: #FFFFFF !important;
+    box-shadow: var(--shadow-glow-purple);
+    font-weight: 600;
+}
+
+.sidebar .nav-sidebar .nav-item .nav-link.active .nav-icon {
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   MODERN CARDS & STAT CARDS
+   ========================================================================== */
+.card {
+    background: var(--surface-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 1.5rem;
+    transition: all 0.25s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 1.15rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-header .card-title {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.card-body {
+    padding: 1.4rem;
+}
+
+/* Modern Stat Card Replacement */
+.stat-card-modern {
+    background: #FFFFFF;
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 1.4rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.stat-card-modern:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: #CBD5E1;
+}
+
+.stat-card-modern .stat-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.stat-card-modern .stat-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.35rem;
+}
+
+.stat-card-modern .stat-value {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.1;
+}
+
+.stat-card-modern .stat-icon-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.stat-card-modern .stat-footer {
+    margin-top: 1.25rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-card-modern .stat-action {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s ease;
+}
+
+.stat-card-modern:hover .stat-action {
+    gap: 0.65rem;
+}
+
+/* Stat Themes */
+.stat-theme-blue .stat-icon-circle {
+    background: #EFF6FF;
+    color: #2563EB;
+}
+.stat-theme-blue .stat-action { color: #2563EB; }
+
+.stat-theme-emerald .stat-icon-circle {
+    background: #ECFDF5;
+    color: #059669;
+}
+.stat-theme-emerald .stat-action { color: #059669; }
+
+.stat-theme-purple .stat-icon-circle {
+    background: #F5F3FF;
+    color: #7C3AED;
+}
+.stat-theme-purple .stat-action { color: #7C3AED; }
+
+.stat-theme-amber .stat-icon-circle {
+    background: #FFFBEB;
+    color: #D97706;
+}
+.stat-theme-amber .stat-action { color: #D97706; }
+
+.stat-theme-rose .stat-icon-circle {
+    background: #FFF1F2;
+    color: #E11D48;
+}
+.stat-theme-rose .stat-action { color: #E11D48; }
+
+/* ==========================================================================
+   MODERN HERO BANNER (DASHBOARD WELCOME)
+   ========================================================================== */
+.welcome-hero-banner {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    margin-bottom: 2rem;
+}
+
+.welcome-hero-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+}
+
+.welcome-hero-banner .hero-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #F8FAFC;
+}
+
+.welcome-hero-banner .hero-subtitle {
+    font-size: 0.95rem;
+    color: #94A3B8;
+    margin-bottom: 1.25rem;
+    max-width: 650px;
+}
+
+/* ==========================================================================
+   MODERN TABLE & DATA ENHANCEMENTS
+   ========================================================================== */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #F8FAFC !important;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 2px solid var(--border-soft) !important;
+    border-top: none !important;
+    padding: 0.85rem 1rem;
+}
+
+.table tbody td {
+    padding: 0.95rem 1rem;
+    vertical-align: middle;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.9rem;
+}
+
+.table tbody tr {
+    transition: background-color 0.18s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #F8FAFC;
+}
+
+/* ==========================================================================
+   MODERN BADGES & PILLS
+   ========================================================================== */
+.badge {
+    font-family: var(--font-body);
+    font-weight: 600;
+    padding: 0.38rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.badge-primary, .bg-primary {
+    background-color: #EFF6FF !important;
+    color: #1E40AF !important;
+    border: 1px solid #DBEAFE;
+}
+
+.badge-success, .bg-success {
+    background-color: #ECFDF5 !important;
+    color: #047857 !important;
+    border: 1px solid #D1FAE5;
+}
+
+.badge-warning, .bg-warning {
+    background-color: #FFFBEB !important;
+    color: #B45309 !important;
+    border: 1px solid #FEF3C7;
+}
+
+.badge-danger, .bg-danger {
+    background-color: #FFF1F2 !important;
+    color: #BE123C !important;
+    border: 1px solid #FFE4E6;
+}
+
+.badge-info, .bg-info {
+    background-color: #F0F9FF !important;
+    color: #0369A1 !important;
+    border: 1px solid #E0F2FE;
+}
+
+/* ==========================================================================
+   MODERN BUTTONS & FORM CONTROLS
+   ========================================================================== */
+.btn {
+    font-family: var(--font-body);
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0.55rem 1.1rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.88rem;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--role-admin-gradient);
+    border: none;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1D4ED8 0%, #1E3A8A 100%);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background: var(--role-dokter-gradient);
+    border: none;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #047857 0%, #065F46 100%);
+    box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+    transform: translateY(-1px);
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+/* ==========================================================================
+   FOOTER MODERN
+   ========================================================================== */
+.main-footer {
+    background: #FFFFFF !important;
+    border-top: 1px solid var(--border-soft) !important;
+    padding: 1rem 1.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
