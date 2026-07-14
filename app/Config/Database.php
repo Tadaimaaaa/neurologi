@@ -201,13 +201,24 @@ class Database extends Config
             $this->defaultGroup = 'tests';
         }
 
-        // Auto-configure from Railway MySQL environment variables if present
-        if (getenv('MYSQLHOST')) {
-            $this->default['hostname'] = getenv('MYSQLHOST');
-            $this->default['username'] = getenv('MYSQLUSER') ?: 'root';
-            $this->default['password'] = getenv('MYSQLPASSWORD') ?: '';
-            $this->default['database'] = getenv('MYSQLDATABASE') ?: 'railway';
-            $this->default['port']     = (int) (getenv('MYSQLPORT') ?: 3306);
+        // Auto-configure from Railway / Cloud environment variables if present
+        $dbUrl = getenv('DATABASE_URL') ?: (getenv('MYSQL_URL') ?: ($_ENV['DATABASE_URL'] ?? ($_ENV['MYSQL_URL'] ?? '')));
+        if ($dbUrl && ($parsed = parse_url($dbUrl))) {
+            $this->default['hostname'] = $parsed['host'] ?? '127.0.0.1';
+            $this->default['username'] = $parsed['user'] ?? 'root';
+            $this->default['password'] = $parsed['pass'] ?? '';
+            $this->default['database'] = ltrim($parsed['path'] ?? '/railway', '/');
+            $this->default['port']     = (int) ($parsed['port'] ?? 3306);
+            $this->default['DBDriver'] = 'MySQLi';
+        }
+
+        $host = getenv('MYSQLHOST') ?: (getenv('MYSQL_HOST') ?: (getenv('DB_HOST') ?: ($_ENV['MYSQLHOST'] ?? ($_ENV['MYSQL_HOST'] ?? ($_ENV['DB_HOST'] ?? '')))));
+        if (! empty($host)) {
+            $this->default['hostname'] = $host;
+            $this->default['username'] = getenv('MYSQLUSER') ?: (getenv('MYSQL_USER') ?: (getenv('DB_USER') ?: ($_ENV['MYSQLUSER'] ?? 'root')));
+            $this->default['password'] = getenv('MYSQLPASSWORD') ?: (getenv('MYSQL_PASSWORD') ?: (getenv('DB_PASSWORD') ?: ($_ENV['MYSQLPASSWORD'] ?? '')));
+            $this->default['database'] = getenv('MYSQLDATABASE') ?: (getenv('MYSQL_DATABASE') ?: (getenv('DB_DATABASE') ?: ($_ENV['MYSQLDATABASE'] ?? 'railway')));
+            $this->default['port']     = (int) (getenv('MYSQLPORT') ?: (getenv('MYSQL_PORT') ?: (getenv('DB_PORT') ?: ($_ENV['MYSQLPORT'] ?? 3306))));
             $this->default['DBDriver'] = 'MySQLi';
         }
     }
